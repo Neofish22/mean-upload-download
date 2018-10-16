@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../build/middle",
+    "target": "es6",
+    "module": "commonjs"
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}

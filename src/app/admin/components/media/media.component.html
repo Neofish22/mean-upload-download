@@ -1,0 +1,94 @@
+<div *ngIf="!medias" class="pt-3">
+  Loading...
+</div>
+
+
+<ng-template #renderFileView let-filename="filename" let-type="type">
+  <ng-container [ngSwitch]="type.substr(0,type.indexOf('/'))">
+    <div *ngSwitchCase="'image'">
+      <img src="/api/media/{{filename}}">
+    </div>
+
+    <div *ngSwitchDefault>
+      <div>&lt;&lt;{{filename}}&gt;&gt;</div>
+    </div>
+  </ng-container>
+</ng-template>
+
+<div *ngIf="medias">
+  <div *ngFor="let media of medias; index as index" class="media-item">
+
+    <div class="media-item-header">
+      <div>
+        <div *ngIf="!editingMedias[index]" class="media-item-title">
+          {{media.filename}}
+        </div>
+        <input *ngIf="editingMedias[index]" [(ngModel)]="editingMedias[index].filename" type="text" required class="media-item-title">
+        <div class="media-item-buttons">
+           <div>
+
+            <div class="button-group">
+              <button *ngIf="editingMedias[index]" (click)="upload(index)">
+                Upload
+              </button>
+            </div>
+
+            <div class="button-group">
+              <button *ngIf="!editingMedias[index]" (click)="edit(index)">
+                Edit
+              </button>
+              <button *ngIf="editingMedias[index]" (click)="save(index)" [disabled]="!isValid(index)">
+                Save
+              </button>
+              <button *ngIf="editingMedias[index]" (click)="reset(index)">
+                Undo
+              </button>
+            </div>
+
+            <div class="button-group">
+              <button (click)="delete(index)">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+
+        <div class="media-item-info">
+           <div>
+            <div class="media-item-info-item">
+              Mime type (auto)
+            </div>
+            <div *ngIf="!editingMedias[index]" class="media-item-info-item">
+              {{media.type}}
+            </div>
+            <input *ngIf="editingMedias[index]" [(ngModel)]="editingMedias[index].type" type="email" required class="media-item-info-item">
+          </div>
+        </div>
+
+        <div class="media-item-media">
+          <a *ngIf="renderMedias[index]" href="/api/media/{{renderMedias[index]}}" target="_blank">
+            <ng-content *ngTemplateOutlet="renderFileView; context: {type:medias[index].type,filename:renderMedias[index]}"></ng-content>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <div>
+      <button (click)="startNew()">
+        New
+      </button>
+    </div>
+    <div>
+      <input #fileInput type="file">
+    </div>
+  </div>
+</div>
