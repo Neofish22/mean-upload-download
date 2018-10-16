@@ -12,18 +12,18 @@ Setup mongod
 - Create `mean-upload-download` database.
 - Create user with:
 ```
-    name: mean-upload-download
-    pass: (given between : and @ in srv/config.ts)
-    authenticationDatabase: mean-upload-download
+name: mean-upload-download
+pass: (given between : and @ in srv/config.ts)
+authenticationDatabase: mean-upload-download
 ```
 - Exact commands:
 ```
-    use mean-upload-download
-    db.createUser({
-      user: "mean-upload-download",
-      pwd: "a1uOY7B4fLV6QUj06yjk",
-      roles: [{"role":"readWrite","db":"mean-upload-download"}]
-      })
+use mean-upload-download
+db.createUser({
+  user: "mean-upload-download",
+  pwd: "a1uOY7B4fLV6QUj06yjk",
+  roles: [{"role":"readWrite","db":"mean-upload-download"}]
+  })
 ```
 
 Import data into mongod
