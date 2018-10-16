@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "5f3a1dd7-e1af-4bef-baed-f7e3ba0b8073",
+		"name": "MEAN Upload Download demo",
+		"description": "Part of Sam Fisk's MEAN Upload Download demo on GitHub: https://github.com/Neofish22/mean-upload-download\nThat goes hand-in-hand with article on implementing upload and download routes with Express, Mongo, and Angular: https://gmaemoo.se/mean-upload-download\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get media data (/api/media/:filename)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/media/test.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"media",
+						"test.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all media items (/api/admin/media)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/admin/media",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"media"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new media item (/api/admin/media)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"filename\": \"test.png\",\n\t\"type\": \"image/png\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/admin/media",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"media"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send media data (/api/admin/media/:id/data)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/admin/media/5bc636dd951575a755014e24/data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"media",
+						"5bc636dd951575a755014e24",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update existing media item (/api/admin/media/:id)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"filename\": \"test.png\",\n\t\"type\": \"image/png\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/admin/media/5bc636dd951575a755014e24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"media",
+						"5bc636dd951575a755014e24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete existing media item (/api/admin/media/:id)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/admin/media/5bc636dd951575a755014e24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"media",
+						"5bc636dd951575a755014e24"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
