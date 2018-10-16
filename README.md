@@ -1,4 +1,4 @@
-Mean Upload/Download demo
+MEAN Upload/Download demo
 ===
 Repository to go along with article here: https://gmaemoo.se/mean-upload-download
 Demonstration of a simple and stripped-back upload/download system based around Angular 6 front-end, Node/Express middleware, and Mongod backend.
