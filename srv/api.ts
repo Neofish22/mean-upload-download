@@ -74,6 +74,7 @@ export function api(app) {
   // Updates a piece of media (if admin).
   .put(/*jwtCheck, adminCheck,*/ (req: express.Request, res: express.Response) => {
     MediaModel.findByIdAndUpdate(req.params['id'],req.body,{new:true})
+    .select('-data')
     .then((media: Media) => res.send(media))
     .catch((err: Error) => handleCaughtErrors(err,res))
   })
