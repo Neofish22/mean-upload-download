@@ -48,6 +48,13 @@ export class MediaComponent implements OnInit {
     let fileInput: HTMLInputElement = this.fileInput.nativeElement
     // Setup callback so know when user has selected a file.
     fileInput.onchange = () => {
+      // Remove callback.
+      fileInput.onchange = undefined
+      // Don't run if there was no selection.
+      if ( fileInput.files.length == 0 ) {
+        return
+      }
+      // Get the file we're going to upload.
       let file = fileInput.files[0]
       // Extra data.
       this.editingMedias[index].filename = file.name
@@ -61,8 +68,6 @@ export class MediaComponent implements OnInit {
           .subscribe(() =>
             // Re-enable rendering.
             this.renderMedias[index] = this.medias[index].filename)
-        // Remove callback.
-        fileInput.onchange = undefined
       })
     }
     // Open the file input window and start everything.
